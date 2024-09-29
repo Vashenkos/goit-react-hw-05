@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { fetchMovieCast } from "../../services/api";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import styles from "./MovieCast.module.css";
 
 function MovieCast() {
   const { movieId } = useParams();
@@ -43,9 +42,8 @@ function MovieCast() {
       {!isLoading && !isError && cast.length > 0 && (
         <ul className={styles.castList}>
           {cast.map((actor) => (
-            <li key={actor.id} className={styles.castItem}>
+            <li key={actor.id}>
               <img
-                className={styles.castImage}
                 src={
                   actor.profile_path
                     ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
@@ -54,9 +52,9 @@ function MovieCast() {
                 width={200}
                 alt={actor.name}
               />
-              <div className={styles.details}>
-                <p className={styles.name}>{actor.name}</p>
-                <p className={styles.character}>Character: {actor.character}</p>
+              <div>
+                <p>{actor.name}</p>
+                <p>Character: {actor.character}</p>
               </div>
             </li>
           ))}
