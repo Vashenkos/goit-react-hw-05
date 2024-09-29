@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import style from "./Navigation.module.css";
+
 import clsx from "clsx";
 
 function Navigation() {
@@ -8,9 +8,9 @@ function Navigation() {
   };
 
   return (
-    <header className={style.header}>
-      <p className={style.logo}>FilmQuest</p>
-      <nav className={style.navigation}>
+    <header >
+      <p >FilmQuest</p>
+      <nav>
         <NavLink className={buildLinkClass} to="/">
           Home
         </NavLink>
