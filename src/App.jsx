@@ -1,30 +1,37 @@
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation/Navigation";
-import HomePage from "./pages//HomePage/HomePage";
+import Loader from "./components/Loader/Loader";
+import "./App.css";
 
-const App = () => {
-    return (
-      <>
-        <Header />
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
+const MovieDetailsPage = lazy(() =>
+  import("./pages/MovieDetailsPage/MovieDetailsPage")
+);
+const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
+const MovieReviews = lazy(() =>
+  import("./components/MovieReviews/MovieReviews")
+);
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+
+function App() {
+  return (
+    <>
+      <Navigation />
+      <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path='/' element={<Navigation />} />
-          <Route path='/home' element={<HomePage />} />
-          <Route path='/users' element={<Users />} />
-          <Route path='/users/:userId' element={<UserDetails />}>
-            <Route path='info' element={<h2>lorem ipsum</h2>} />
-            <Route path='posts' element={<PostsByUser />}>
-              <Route path=':postId/details' element={<PostDetails />} />
-            </Route>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
           </Route>
-          {/* users/24/info */}
-          {/* users/24/posts */}
-          {/*Якщо роут не підійшов - переведе на сторінку 404 */}
-          <Route path='*' element={<NotFound />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </>
-    );
-  };
-  export default App;
+      </Suspense>
+    </>
+  );
+}
 
-
-
-  
+export default App;
