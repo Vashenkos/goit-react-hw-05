@@ -8,7 +8,6 @@ import MovieList from "../../components/MovieList/MovieList";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import LoadingMore from "../../components/LoadingMore/LoadingMore";
-import styles from "./MoviesPage.module.css";
 
 function MoviesPage() {
   const [movies, setMovies] = useState([]);

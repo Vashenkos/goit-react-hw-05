@@ -8,7 +8,6 @@ import {
   import { fetchMovieDetails } from "../../services/api";
   import { useEffect, useRef, useState } from "react";
   import clsx from "clsx";
-  import styles from "./MovieDetailsPage.module.css";
   import Loader from "../../components/Loader/Loader";
   import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
   
@@ -47,17 +46,16 @@ import {
     };
   
     return (
-      <div className={styles.container}>
+      <div>
         {isLoading && <Loader />}
         {isError && <ErrorMessage />}
         {!isLoading && !isError && movieData && (
-          <div className={styles.movieDetails}>
-            <button className={styles.button} onClick={handleGoBack}>
+          <div >
+            <button onClick={handleGoBack}>
               Go back
             </button>
-            <div className={styles.imageContainer}>
+            <div>
               <img
-                className={styles.image}
                 src={
                   movieData.backdrop_path
                     ? `https://image.tmdb.org/t/p/w500/${movieData.poster_path}`
@@ -66,21 +64,21 @@ import {
                 width={500}
                 alt={movieData.title}
               />
-              <div className={styles.infoOverlay}>
-                <h1 className={styles.title}>{movieData.title}</h1>
-                <div className={styles.details}>
-                  <span className={styles.rating}>
+              <div>
+                <h1 >{movieData.title}</h1>
+                <div>
+                  <span>
                     ⭐ {movieData.vote_average.toFixed(1)}
                   </span>
-                  <span className={styles.separator}>|</span>
-                  <span className={styles.releaseDate}>
+                  <span>|</span>
+                  <span>
                     Release: {movieData.release_date}
                   </span>
                 </div>
               </div>
             </div>
   
-            <div className={styles.navigation}>
+            <div>
               <NavLink to="cast" className={buildLinkClass}>
                 Cast
               </NavLink>

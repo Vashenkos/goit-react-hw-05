@@ -39,8 +39,8 @@ function HomePage() {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <h2 className={styles.title}>Trending today</h2>
+    <div>
+      <h2 >Trending today</h2>
       {isLoading && <Loader />}
       {(isError || movies.length === 0) && <ErrorMessage />}
       {!isLoading && !isError && movies.length > 0 && (
