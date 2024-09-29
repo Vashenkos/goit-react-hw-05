@@ -1,5 +1,3 @@
-import styles from "./LoadMoreBtn.module.css";
-
 function LoadMoreBtn({ onClick }) {
   return (
     <div >
