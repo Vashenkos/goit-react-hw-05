@@ -57,9 +57,9 @@ function MoviesPage() {
   };
 
   return (
-    <div className={styles.container}>
+    <div >
       <Toaster position="top-right" reverseOrder={false} />
-      <h2 className={styles.title}>Search Movies</h2>
+      <h2>Search Movies</h2>
       <SearchForm onSearch={handleSearch} />
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
