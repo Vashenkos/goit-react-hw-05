@@ -9,8 +9,7 @@ import { fetchMovieDetails } from "../../services/api";
 import { useEffect, useRef, useState } from "react";  
 import clsx from "clsx";  
 import Loader from "../../components/Loader/Loader";  
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";  
-import styles from './MovieDetailsPage.module.css'; // Переконайтеся, що стилі імпортовані  
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 function MovieDetailsPage() {  
   const [movieData, setMovieData] = useState(null);  
@@ -19,7 +18,7 @@ function MovieDetailsPage() {
   const { movieId } = useParams();  
   const location = useLocation();  
   const navigate = useNavigate();  
-  const backLink = useRef(location.state?.from ?? "/movies"); // Використовуйте '?.' для безпечного доступу  
+  const backLink = useRef(location.state?.from ?? "/movies"); 
 
   const defaultImg =  
     "https://dummyimage.com/500x750/cdcdcd/000.jpg&text=No+poster";  
@@ -27,12 +26,12 @@ function MovieDetailsPage() {
   useEffect(() => {  
     const getMovies = async () => {  
       setIsLoading(true);  
-      setIsError(false); // Скидаємо помилку перед запитом  
+      setIsError(false);
       try {  
         const data = await fetchMovieDetails(movieId);  
         setMovieData(data);  
       } catch (error) {  
-        console.error("Error fetching movie details:", error); // Логування помилки  
+        console.error("Error fetching movie details:", error);   
         setIsError(true);  
       } finally {  
         setIsLoading(false);  
