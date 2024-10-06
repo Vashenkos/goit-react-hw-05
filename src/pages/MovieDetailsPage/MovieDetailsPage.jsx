@@ -9,7 +9,8 @@ import { fetchMovieDetails } from "../../services/api";
 import { useEffect, useRef, useState } from "react";  
 import clsx from "clsx";  
 import Loader from "../../components/Loader/Loader";  
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";  
+// import styles from './MovieDetailsPage.module.css'; 
 
 function MovieDetailsPage() {  
   const [movieData, setMovieData] = useState(null);  
@@ -26,12 +27,12 @@ function MovieDetailsPage() {
   useEffect(() => {  
     const getMovies = async () => {  
       setIsLoading(true);  
-      setIsError(false);
+      setIsError(false); // Скидаємо помилку перед запитом  
       try {  
         const data = await fetchMovieDetails(movieId);  
         setMovieData(data);  
       } catch (error) {  
-        console.error("Error fetching movie details:", error);   
+        console.error("Error fetching movie details:", error);  
         setIsError(true);  
       } finally {  
         setIsLoading(false);  

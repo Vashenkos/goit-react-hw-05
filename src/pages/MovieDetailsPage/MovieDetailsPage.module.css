@@ -1,0 +1,9 @@
+.link {  
+    color: blue;  
+    text-decoration: none;  
+  }  
+  
+  .activeLink {  
+    font-weight: bold;  
+    color: red;  
+  }  
