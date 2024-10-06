@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";  
 import Loader from "../../components/Loader/Loader";  
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";  
-// import styles from './MovieDetailsPage.module.css'; 
+import styles from './MovieDetailsPage.module.css'; 
 
 function MovieDetailsPage() {  
   const [movieData, setMovieData] = useState(null);  
