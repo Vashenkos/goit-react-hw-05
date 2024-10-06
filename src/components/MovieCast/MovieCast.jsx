@@ -22,7 +22,8 @@ function MovieCast() {
         setIsLoading(true);
         const data = await fetchMovieCast(movieId);
         setCast(data);
-      } catch {
+      } catch (error) {  
+        console.error(error);
         setIsError(true);
       } finally {
         setIsLoading(false);
@@ -40,7 +41,7 @@ function MovieCast() {
         <p>No cast information available.</p>
       )}
       {!isLoading && !isError && cast.length > 0 && (
-        <ul className={styles.castList}>
+        <ul>
           {cast.map((actor) => (
             <li key={actor.id}>
               <img
